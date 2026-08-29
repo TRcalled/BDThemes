@@ -1,0 +1,555 @@
+/**
+ * @name system24 (Garfield Squircle Master Edition)
+ * @description A perfected hybrid of TUI aesthetics and organic squircle geometry with clean dark charcoal surfaces, warm Garfield orange accents, and a bottom-docked channel status bar.
+ * @author refact0r & customized
+ * @version 3.1.0
+ * @invite nz87hXyvcy
+ * @website https://github.com/refact0r/system24
+ * @source https://github.com/refact0r/system24/blob/master/theme/system24.theme.css
+ */
+
+/* ==========================================================================
+   1. IMPORTS & TYPOGRAPHY
+   ========================================================================== */
+@import url('https://refact0r.github.io/system24/build/system24.css');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* ==========================================================================
+   2. SYSTEM24 CONFIGURATION OVERRIDES
+   ========================================================================== */
+body {
+    /* Font Options */
+    --font: 'JetBrains Mono', 'DM Mono', monospace;
+    --code-font: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    letter-spacing: -0.02ch;
+
+    /* Sizes & Spacing */
+    --gap: 10px;
+    --divider-thickness: 2px;
+    --border-thickness: 1px;
+    --border-hover-transition: 0.25s cubic-bezier(0.2, 0, 0, 1);
+
+    /* Animation */
+    --animations: on;
+    --list-item-transition: 0.18s ease;
+    --dms-icon-svg-transition: 0.25s ease;
+
+    /* Top Bar */
+    --top-bar-height: var(--gap);
+    --top-bar-button-position: titlebar;
+    --top-bar-title-position: off;
+    --subtle-top-bar-title: off;
+
+    /* Window Controls */
+    --custom-window-controls: off;
+    --window-control-size: 14px;
+
+    /* Custom DMS Icon */
+    --custom-dms-icon: off;
+    --dms-icon-color-before: var(--icon-subtle);
+    --dms-icon-color-after: var(--accent-2);
+    --dms-background-color: linear-gradient(135deg, var(--accent-2), var(--yellow-2), var(--red-2));
+
+    /* Squircle & Panel Geometry Overrides */
+    --unrounding: off;
+    --round-pfp: off;
+    --small-user-panel: on;
+    --custom-spotify-bar: on;
+    --ascii-titles: on;
+    --ascii-loader: cats;
+    --panel-labels: on;
+    --label-color: var(--text-4);
+    --label-font-weight: 600;
+}
+
+/* ==========================================================================
+   3. COLOR PALETTE (OKLCH DARK CHARCOAL & GARFIELD ORANGE)
+   ========================================================================== */
+:root {
+    --colors: on;
+
+    /* Squircle Radii Scale */
+    --radius-xs: 6px;
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 22px;
+    --radius-squircle: 28%;
+    --radius-pill: 9999px;
+
+    /* Ambient Shadows & Glows */
+    --garfield-glow: 0 0 16px oklch(69% 0.17 48 / 0.25);
+    --garfield-subtle-glow: 0 0 8px oklch(69% 0.17 48 / 0.15);
+    --surface-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+
+    /* Neutral Text */
+    --text-0: oklch(14% 0.003 60);
+    --text-1: oklch(98% 0.002 60);
+    --text-2: oklch(88% 0.004 60);
+    --text-3: oklch(78% 0.004 60);
+    --text-4: oklch(60% 0.005 60);
+    --text-5: oklch(42% 0.005 60);
+
+    /* Charcoal Surfaces */
+    --bg-1: oklch(28% 0.006 60);
+    --bg-2: oklch(22% 0.005 60);
+    --bg-3: oklch(17.5% 0.004 60);
+    --bg-4: oklch(13.5% 0.003 60);
+
+    /* Interactive States */
+    --hover: oklch(95% 0 0 / 0.05);
+    --active: oklch(95% 0 0 / 0.09);
+    --active-2: oklch(95% 0 0 / 0.14);
+    --message-hover: oklch(95% 0 0 / 0.035);
+
+    /* Garfield Orange Palette */
+    --accent-1: oklch(76% 0.16 52);
+    --accent-2: oklch(69% 0.17 48);
+    --accent-3: oklch(63% 0.17 46);
+    --accent-4: oklch(57% 0.16 44);
+    --accent-5: oklch(51% 0.15 42);
+    --accent-new: oklch(66% 0.19 28);
+
+    /* Gradients */
+    --mention: linear-gradient(90deg, oklch(69% 0.17 48 / 0.14) 0%, transparent 75%);
+    --mention-hover: linear-gradient(90deg, oklch(69% 0.17 48 / 0.22) 0%, transparent 85%);
+    --reply: linear-gradient(90deg, oklch(90% 0 0 / 0.07) 0%, transparent 70%);
+    --reply-hover: linear-gradient(90deg, oklch(90% 0 0 / 0.11) 0%, transparent 80%);
+
+    /* Status Presence */
+    --online: oklch(74% 0.16 145);
+    --dnd: oklch(66% 0.21 28);
+    --idle: oklch(80% 0.17 80);
+    --streaming: oklch(70% 0.17 310);
+    --offline: var(--text-4);
+
+    /* Borders */
+    --border-light: oklch(100% 0 0 / 0.06);
+    --border: oklch(100% 0 0 / 0.10);
+    --border-hover: var(--accent-2);
+    --button-border: oklch(100% 0 0 / 0.08);
+
+    /* Discord Core Variable Overrides */
+    --brand-experiment: var(--accent-2) !important;
+    --background-primary: var(--bg-4) !important;
+    --background-secondary: var(--bg-3) !important;
+    --background-secondary-alt: var(--bg-4) !important;
+    --background-tertiary: var(--bg-4) !important;
+    --background-floating: var(--bg-3) !important;
+    --channeltextarea-background: var(--bg-2) !important;
+}
+
+/* ==========================================================================
+   4. SQUIRCLE ARCHITECTURE
+   ========================================================================== */
+.sidebar_a4d038,
+.chat_a7d72e,
+.container_cbd271,
+.panels_a4d038 {
+    border-radius: var(--radius-md) !important;
+    border: 1px solid var(--border) !important;
+    transition: border-color var(--border-hover-transition);
+}
+
+.chat_a7d72e:hover,
+.sidebar_a4d038:hover {
+    border-color: oklch(100% 0 0 / 0.16) !important;
+}
+
+/* Squircle User Profile Avatars */
+.avatar__08316,
+.avatar_c51b86,
+.wrapper_c51b86 foreignObject,
+.callAvatarMask__71d34 foreignObject {
+    border-radius: var(--radius-squircle) !important;
+    mask: none !important;
+    -webkit-mask: none !important;
+    transition: transform 0.2s ease, border-radius 0.2s ease;
+}
+
+.avatar__08316:hover,
+.wrapper_c51b86:hover foreignObject {
+    border-radius: calc(var(--radius-squircle) - 6%) !important;
+    transform: scale(1.04);
+}
+
+/* Guild Icons */
+.wrapper_c5f96a foreignObject {
+    border-radius: var(--radius-squircle) !important;
+    mask: none !important;
+    -webkit-mask: none !important;
+    transition: border-radius 0.25s ease, transform 0.2s ease;
+}
+
+.wrapper_c5f96a:hover foreignObject {
+    border-radius: 12px !important;
+    transform: scale(1.06);
+}
+
+.item_c4d794 {
+    background: var(--accent-2) !important;
+    border-radius: var(--radius-pill) !important;
+    width: 4.5px !important;
+    box-shadow: var(--garfield-glow);
+}
+
+/* ==========================================================================
+   5. CHANNELS & MEMBERS
+   ========================================================================== */
+.wrapper_d83742 {
+    border-radius: var(--radius-pill) !important;
+    margin: 2px 8px !important;
+    padding: 0 10px !important;
+    transition: background-color var(--list-item-transition), transform 0.15s ease;
+}
+
+.wrapper_d83742:hover:not(.modeSelected_d83742) {
+    background-color: var(--hover) !important;
+    transform: translateX(2px);
+}
+
+.wrapper_d83742.modeSelected_d83742 {
+    background-color: oklch(69% 0.17 48 / 0.16) !important;
+    border-left: 3px solid var(--accent-2) !important;
+}
+
+.wrapper_d83742.modeSelected_d83742 .name_d83742 {
+    color: var(--accent-1) !important;
+    font-weight: 600 !important;
+}
+
+.unread_d83742 {
+    background-color: var(--accent-2) !important;
+    width: 5px;
+    height: 5px;
+    border-radius: var(--radius-pill);
+    box-shadow: var(--garfield-glow);
+}
+
+.member_a31c43 {
+    border-radius: var(--radius-sm) !important;
+    margin: 1px 8px !important;
+}
+
+.member_a31c43:hover {
+    background-color: var(--hover) !important;
+}
+
+.member_a31c43.selected_a31c43 {
+    background-color: var(--active) !important;
+}
+
+/* ==========================================================================
+   6. CHAT INPUT & PROMPT
+   ========================================================================== */
+.form_a7d72e {
+    padding: 0 14px !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+}
+
+.channelTextArea_a7d72e {
+    position: relative !important;
+    background-color: var(--bg-2) !important;
+    border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
+    border: 1px solid var(--border) !important;
+    border-bottom: 1px solid var(--border-light) !important;
+    box-shadow: none !important;
+    margin-bottom: 0 !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.channelTextArea_a7d72e:focus-within {
+    border-color: var(--accent-2) !important;
+    box-shadow: var(--garfield-glow) !important;
+}
+
+.channelTextArea_a7d72e::before {
+    content: "❯";
+    position: absolute;
+    left: 12px;
+    top: 14px;
+    line-height: 1;
+    color: var(--accent-2);
+    font-family: var(--font);
+    font-weight: 700;
+    font-size: 13px;
+    pointer-events: none;
+    opacity: 0.85;
+    z-index: 2;
+}
+
+.channelTextArea_a7d72e .scrollableContainer_d0696b {
+    padding-left: 20px !important;
+    min-height: 44px !important;
+}
+
+.typing_d7ebeb {
+    top: -24px !important;
+    left: 0 !important;
+    padding: 0 4px !important;
+    height: 20px !important;
+}
+
+/* ==========================================================================
+   7. MESSAGES & CODEBLOCKS
+   ========================================================================== */
+.message_d5deea {
+    margin: 1px 8px !important;
+    border-radius: var(--radius-sm) !important;
+    transition: background-color 0.12s ease;
+}
+
+.message_d5deea:hover {
+    background-color: var(--message-hover) !important;
+}
+
+.message_d5deea.mentioned_d5deea {
+    background: var(--mention) !important;
+    border-left: 3px solid var(--accent-2) !important;
+    border-radius: 2px var(--radius-sm) var(--radius-sm) 2px !important;
+}
+
+.message_d5deea.mentioned_d5deea:hover {
+    background: var(--mention-hover) !important;
+}
+
+code, 
+pre code {
+    font-family: var(--code-font) !important;
+    border-radius: var(--radius-sm) !important;
+    background-color: var(--bg-3) !important;
+    border: 1px solid var(--border-light) !important;
+}
+
+:not(pre) > code {
+    padding: 0.15em 0.45em !important;
+    color: var(--accent-1) !important;
+    background-color: oklch(69% 0.17 48 / 0.12) !important;
+    border: 1px solid oklch(69% 0.17 48 / 0.22) !important;
+}
+
+.embedFull_b0068a {
+    background-color: var(--bg-3) !important;
+    border-radius: var(--radius-sm) !important;
+    border: 1px solid var(--border) !important;
+    border-left: 4px solid var(--accent-2) !important;
+}
+
+/* ==========================================================================
+   8. SQUIRCLE BUTTONS & INTERACTION ELEMENTS
+   ========================================================================== */
+.button_dd4f85 {
+    border-radius: var(--radius-pill) !important;
+    font-family: var(--font) !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+.button_dd4f85.lookFilled_dd4f85.colorBrand_dd4f85 {
+    background-color: var(--accent-3) !important;
+    color: var(--text-0) !important;
+    font-weight: 700 !important;
+}
+
+.button_dd4f85.lookFilled_dd4f85.colorBrand_dd4f85:hover {
+    background-color: var(--accent-2) !important;
+    box-shadow: var(--garfield-glow) !important;
+}
+
+.badge_c4d794,
+.numberBadge__2b097 {
+    background-color: var(--accent-2) !important;
+    color: var(--text-0) !important;
+    border-radius: var(--radius-pill) !important;
+    font-family: var(--font);
+    font-weight: 700;
+    box-shadow: var(--garfield-glow);
+}
+
+.menu_c1e9c4,
+.userPopoutOuter_c69a7b {
+    background-color: var(--bg-3) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--surface-shadow) !important;
+}
+
+.item_c1e9c4 {
+    border-radius: var(--radius-xs) !important;
+    font-family: var(--font) !important;
+}
+
+.item_c1e9c4.focused_c1e9c4 {
+    background-color: var(--accent-2) !important;
+    color: var(--text-0) !important;
+    font-weight: 600;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--bg-1) !important;
+    border-radius: var(--radius-pill) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-3) !important;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent !important;
+}
+
+/* ==========================================================================
+   9. UNIFIED BOTTOM STATUS DOCK (PERFECTED FLEX & ALIGNMENT)
+   ========================================================================== */
+
+/* 1. Chat Container Flex Layout */
+.chat_a7d72e {
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+}
+
+.content_a7d72e,
+.chatContent_a7d72e {
+    order: 1 !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.messagesWrapper_e2e187 {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+}
+
+/* 2. Docked Bottom Header Attached Underneath Input */
+[class^="subtitleContainer_"],
+section.title_a7d72e {
+    order: 2 !important;
+    position: relative !important;
+    z-index: 10 !important;
+    flex-shrink: 0 !important;
+    
+    /* Pixel-Perfect Match with Input Container Width & Borders */
+    margin: 0 14px 14px 14px !important;
+    width: calc(100% - 28px) !important;
+    box-sizing: border-box !important;
+    padding: 0 12px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    
+    background: var(--bg-3) !important;
+    border: 1px solid var(--border) !important;
+    border-top: none !important;
+    border-radius: 0 0 var(--radius-md) var(--radius-md) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Hide Unwanted Ghost Divider Lines */
+.title_a7d72e [class*="divider_"],
+[class^="title_"] [class*="divider_"] {
+    display: none !important;
+}
+
+/* 3. Left Section: Channel / Avatar / Name */
+.title_a7d72e .children_a7d72e,
+[class^="title_"] [class*="children_"] {
+    display: flex !important;
+    align-items: center !important;
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.title_a7d72e .title_d98031,
+.title_a7d72e .topic_a7d72e,
+[class^="title_"] [class*="topic_"] {
+    flex-shrink: 1 !important;
+    min-width: 0 !important;
+    color: var(--text-4) !important;
+    font-family: var(--font) !important;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* 4. Right Section: Action Icons -> Search -> Controls */
+.toolbar_a7d72e,
+[class*="toolbar_"] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    flex: 0 0 auto !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    gap: 6px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Action Icons */
+.icon_a7d72e,
+.iconWrapper_a7d72e {
+    color: var(--text-4) !important;
+    width: 26px !important;
+    height: 26px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    border-radius: var(--radius-xs) !important;
+    transition: all 0.18s ease !important;
+}
+
+.icon_a7d72e:hover,
+.iconWrapper_a7d72e:hover {
+    color: var(--accent-1) !important;
+    background-color: var(--hover) !important;
+}
+
+/* 5. Minimalist Compact Search Pill */
+.search_a46bef,
+.search_ff5f90 {
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+}
+
+.searchBar_a46bef,
+.searchBar_ff5f90 {
+    background-color: var(--bg-2) !important;
+    border-radius: var(--radius-pill) !important;
+    border: 1px solid var(--border-light) !important;
+    display: flex !important;
+    align-items: center !important;
+    height: 24px !important;
+    padding: 0 8px !important;
+    transition: all 0.2s ease !important;
+}
+
+.searchBar_a46bef:focus-within,
+.searchBar_ff5f90:focus-within {
+    border-color: var(--accent-2) !important;
+    box-shadow: var(--garfield-subtle-glow) !important;
+}
