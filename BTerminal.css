@@ -1,24 +1,37 @@
-:root {
-  /* Base Palette */
-  --term-black: #050705;
-  --term-dark: #0a0d0a;
-  --term-surface: #0f140f;
-  --term-border: #1a2a1c;
-  --term-green: #00ff66;
-  --term-green-dim: #2e663a;
-  --term-text-bright: #e6ffe6;
-  --term-text-main: #85b88f;
-  --term-text-muted: #3d5e44;
+/**
+ * @name BTerminal
+ * @author TRcalled
+ * @version 2.0.0
+ * @description Authentic, ultra-optimized zero-bloat CRT Terminal theme for Discord.
+ * @source https://github.com/TRcalled/BDThemes
+*/
 
-  /* Fonts */
-  --font-primary: "JetBrains Mono", Consolas, monospace !important;
-  --font-display: var(--font-primary) !important;
-  --font-code: var(--font-primary) !important;
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
 
-  /* Discord Design Tokens */
-  --bg-base-primary: var(--term-black) !important;
-  --bg-base-secondary: var(--term-dark) !important;
-  --bg-base-tertiary: var(--term-black) !important;
+/* ==========================================================================
+   1. COLOR MAPPING (Bound to .theme-dark & #app-mount to guarantee override)
+   ========================================================================== */
+:root,
+.theme-dark,
+.theme-light,
+#app-mount {
+  /* Terminal Color Palette */
+  --term-black: #050705;          /* Pure CRT screen black */
+  --term-dark: #090e0a;           /* Secondary console dark */
+  --term-surface: #0e150f;        /* Embeds & floating popouts */
+  --term-border: #18331d;         /* 1px structural framing */
+  --term-green: #00ff66;          /* Classic Phosphor Green */
+  --term-green-dim: #1d4d29;      /* Muted status */
+  --term-text: #85c292;           /* Terminal readout text */
+  --term-text-bright: #d9ffd9;    /* Command / User focus */
+  --term-text-muted: #3a5e42;     /* Inactive elements */
+
+  /* Global Monospace Font */
+  --font-primary: 'JetBrains Mono', Consolas, 'Courier New', monospace !important;
+  --font-display: 'JetBrains Mono', Consolas, 'Courier New', monospace !important;
+  --font-code: 'JetBrains Mono', Consolas, 'Courier New', monospace !important;
+
+  /* Discord Core Semantic Tokens */
   --background-primary: var(--term-black) !important;
   --background-secondary: var(--term-dark) !important;
   --background-secondary-alt: var(--term-black) !important;
@@ -27,98 +40,151 @@
   --background-floating: var(--term-surface) !important;
   --channeltextarea-background: var(--term-dark) !important;
 
-  /* Accent & Interaction Tokens */
-  --brand-experiment: var(--term-green) !important;
-  --brand-500: var(--term-green) !important;
-  --brand-560: var(--term-green) !important;
-  --text-normal: var(--term-text-main) !important;
+  /* Modern Discord Token Injections */
+  --bg-base-primary: var(--term-black) !important;
+  --bg-base-secondary: var(--term-dark) !important;
+  --bg-base-tertiary: var(--term-black) !important;
+  --bg-surface-raised: var(--term-surface) !important;
+  --bg-surface-overlay: var(--term-surface) !important;
+
+  /* Text & Interactivity */
+  --text-normal: var(--term-text) !important;
   --text-muted: var(--term-text-muted) !important;
-  --text-link: var(--term-green) !important;
   --header-primary: var(--term-text-bright) !important;
-  --header-secondary: var(--term-text-main) !important;
+  --header-secondary: var(--term-text) !important;
   --interactive-normal: var(--term-text-muted) !important;
   --interactive-hover: var(--term-text-bright) !important;
   --interactive-active: var(--term-green) !important;
+  --interactive-muted: #1c3021 !important;
+  --brand-experiment: var(--term-green) !important;
+  --brand-500: var(--term-green) !important;
 
-  /* Selection & Mention Modifiers */
-  --background-modifier-hover: #00ff660d !important;
-  --background-modifier-active: #00ff661a !important;
-  --background-modifier-selected: #00ff6622 !important;
-  --background-mentioned: #00ff660f !important;
+  /* Modifiers */
+  --background-modifier-hover: #00ff6610 !important;
+  --background-modifier-active: #00ff6622 !important;
+  --background-modifier-selected: #00ff6633 !important;
+  --background-mentioned: #00ff660d !important;
 }
 
-/* Strips heavy GPU layers (shadows, rounded corners, blur filters, animation delays) */
+/* ==========================================================================
+   2. PERFORMANCE STRIPPING (Maximum FPS / Zero Lag)
+   ========================================================================== */
 *, *::before, *::after {
   box-shadow: none !important;
   text-shadow: none !important;
   backdrop-filter: none !important;
+  border-radius: 0 !important;             /* Terminal UI is strictly rectangular */
+  transition: none !important;              /* Zero paint delay on hover */
+}
+
+/* Instant Black Background Enforcement */
+#app-mount,
+#app-mount .bg__960e4,
+#app-mount [class*="chat_"],
+#app-mount [class*="sidebar_"],
+#app-mount [class*="guilds_"],
+#app-mount [class*="panels_"] {
+  background-color: var(--term-black) !important;
+}
+
+/* ==========================================================================
+   3. AUTHENTIC TERMINAL UI COMPONENTS
+   ========================================================================== */
+
+/* Terminal Grid Borders */
+#app-mount [class*="sidebar_"] {
+  border-right: 1px solid var(--term-border) !important;
+}
+#app-mount [class*="guilds_"] {
+  border-right: 1px solid var(--term-border) !important;
+}
+#app-mount [class*="membersWrap_"] {
+  border-left: 1px solid var(--term-border) !important;
+}
+
+/* Terminal Command Prompt Input (Adds a CLI '>' prompt) */
+#app-mount [class*="channelTextArea_"] {
+  border: 1px solid var(--term-border) !important;
+  background-color: var(--term-dark) !important;
+  position: relative;
+}
+#app-mount [class*="channelTextArea_"]:focus-within {
+  border-color: var(--term-green) !important;
+}
+#app-mount [class*="channelTextArea_"]::before {
+  content: ">";
+  position: absolute;
+  left: 12px;
+  top: 13px;
+  color: var(--term-green);
+  font-weight: bold;
+  font-family: var(--font-primary);
+  z-index: 2;
+}
+#app-mount [class*="slateTextArea_"] {
+  padding-left: 28px !important;
+}
+
+/* Server Icons (Terminal square badges) */
+#app-mount [class*="guilds_"] foreignObject,
+#app-mount [class*="guilds_"] [class*="wrapper_"] {
+  border-radius: 0 !important;
+  mask: none !important;
+  -webkit-mask: none !important;
+}
+
+/* Server Selected Marker (Terminal Block Cursor) */
+#app-mount [class*="item__58105"],
+#app-mount [class*="pill_"] span {
+  background-color: var(--term-green) !important;
+  width: 4px !important;
   border-radius: 0 !important;
 }
 
-#app-mount * {
-  transition-property: none !important;
+/* Chat Messages */
+#app-mount [class*="message_"]:hover {
+  background-color: var(--term-surface) !important;
 }
-
-::selection {
+#app-mount [class*="message_"]::before {
+  display: none !important;                /* Eliminates your friend's laggy layout hack */
+}
+#app-mount [class*="mentioned_"]:before {
+  content: "" !important;
+  display: block !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px !important;
   background: var(--term-green) !important;
-  color: #000000 !important;
 }
 
-/* Clean 1px structural terminal borders */
-#app-mount .sidebar_c48ade,
-#app-mount .chat_a7d72e,
-#app-mount .container_c8ffbb {
-  border-left: 1px solid var(--term-border);
-}
-
-#app-mount .guilds_c48ade {
-  border-right: 1px solid var(--term-border);
-}
-
-/* Chat Input Bar */
-#app-mount .channelTextArea_f75fb0 {
-  background: var(--term-dark) !important;
-  border: 1px solid var(--term-border) !important;
-}
-
-#app-mount .channelTextArea_f75fb0:focus-within {
-  border-color: var(--term-green) !important;
-}
-
-/* Message Hover */
-#app-mount .message__5126c:hover {
-  background: var(--term-surface) !important;
-}
-
-/* Codeblocks & Embeds */
-#app-mount pre, 
+/* Terminal Log Codeblocks & Embeds */
+#app-mount pre,
 #app-mount code,
-#app-mount .embedFull__623de {
-  background: var(--term-surface) !important;
+#app-mount [class*="embedFull_"] {
+  background-color: var(--term-surface) !important;
   border: 1px solid var(--term-border) !important;
+  border-left: 3px solid var(--term-green) !important;
 }
 
-/* Thin Scrollbar */
+/* Ultra-Thin 3px Green Scrollbar */
 ::-webkit-scrollbar {
-  width: 4px !important;
-  height: 4px !important;
+  width: 3px !important;
+  height: 3px !important;
+}
+::-webkit-scrollbar-track {
+  background: var(--term-black) !important;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--term-border) !important;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--term-green-dim) !important;
+  background: var(--term-green) !important;
 }
 
-/* Popouts & Menus */
-#app-mount .menu_c1e9c4,
-#app-mount .userPopoutOuter_c69a7b,
-#app-mount .root__49fc1 {
-  background: var(--term-dark) !important;
-  border: 1px solid var(--term-border) !important;
-}
-
-#app-mount .item_c1e9c4:hover:not(.colorDanger_c1e9c4) {
+/* Selection */
+::selection {
   background: var(--term-green) !important;
   color: #000000 !important;
 }
