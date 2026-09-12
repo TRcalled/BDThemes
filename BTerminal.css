@@ -1,147 +1,140 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+/**
+ * @name BTerminal
+ * @author TRcalled
+ * @version 4.0.0
+ * @description Windows 10 Command Prompt (cmd.exe) theme for Discord. Zero-network font overhead, maximum performance.
+ * @source https://github.com/TRcalled/BDThemes
+*/
 
 /* ==========================================================================
-   1. VISUAL REFRESH TOKEN OVERRIDES (What makes the colors actually change)
+   1. WINDOWS 10 CMD COLOR PALETTE (Microsoft Campbell Standard)
    ========================================================================== */
 :root,
 .visual-refresh,
 .theme-dark,
 .theme-light,
 #app-mount {
-  /* Core Terminal Colors */
-  --term-black: #050705;          /* Deepest screen black */
-  --term-dark: #090e0a;           /* Secondary console black */
-  --term-surface: #0e150f;        /* Embeds, popouts & card surfaces */
-  --term-border: #18331d;         /* 1px structural framing */
-  --term-green: #00ff66;          /* Classic Phosphor Green accent */
-  --term-green-dim: #1d4d29;      /* Inactive/Muted green */
-  --term-text: #85c292;           /* Standard terminal body text */
-  --term-text-bright: #d9ffd9;    /* High-contrast headers & user focus */
-  --term-text-muted: #3a5e42;     /* Timestamp & quiet text */
+  /* Official Windows 10 Console Palette */
+  --cmd-bg: #0C0C0C;              /* Default cmd.exe console black */
+  --cmd-surface: #141414;         /* Floating menus, popouts & card surfaces */
+  --cmd-border: #2B2B2B;          /* 1px window partition border */
+  --cmd-text: #CCCCCC;            /* Default command prompt foreground silver */
+  --cmd-text-bright: #FFFFFF;     /* Bright white command highlight */
+  --cmd-text-muted: #767676;      /* Inactive console gray / comments */
+  --cmd-blue: #3B78FF;            /* Windows 10 console hyperlink blue */
 
-  /* Global Monospace Terminal Font */
-  --font-primary: 'JetBrains Mono', Consolas, 'Courier New', monospace !important;
-  --font-display: 'JetBrains Mono', Consolas, 'Courier New', monospace !important;
-  --font-code: 'JetBrains Mono', Consolas, 'Courier New', monospace !important;
+  /* Pure Local System Fonts (Consolas / Cascadia Mono are built into Windows 10) */
+  --font-primary: Consolas, "Cascadia Mono", "Lucida Console", monospace !important;
+  --font-display: Consolas, "Cascadia Mono", "Lucida Console", monospace !important;
+  --font-code: Consolas, "Cascadia Mono", "Lucida Console", monospace !important;
 
   /* --- DISCORD VISUAL REFRESH BACKGROUNDS (Neutral 62-99) --- */
-  --neutral-99: var(--term-black) !important;
-  --neutral-97: var(--term-black) !important;
-  --neutral-95: var(--term-black) !important;
-  --neutral-92: var(--term-black) !important;
-  --neutral-91: var(--term-black) !important;
-  --neutral-87: var(--term-dark) !important;
-  --neutral-84: var(--term-dark) !important;
-  --neutral-83: var(--term-dark) !important;
-  --neutral-79: var(--term-dark) !important;
-  --neutral-76: var(--term-surface) !important;
-  --neutral-75: var(--term-surface) !important;
-  --neutral-74: var(--term-surface) !important;
-  --neutral-73: var(--term-surface) !important;
-  --neutral-72: var(--term-surface) !important;
-  --neutral-71: var(--term-surface) !important;
-  --neutral-70: var(--term-surface) !important;
-  --neutral-69: var(--term-surface) !important;
-  --neutral-66: var(--term-surface) !important;
-  --neutral-65: var(--term-surface) !important;
-  --neutral-64: var(--term-surface) !important;
-  --neutral-63: var(--term-surface) !important;
-  --neutral-62: var(--term-surface) !important;
+  --neutral-99: var(--cmd-bg) !important;
+  --neutral-97: var(--cmd-bg) !important;
+  --neutral-95: var(--cmd-bg) !important;
+  --neutral-92: var(--cmd-bg) !important;
+  --neutral-91: var(--cmd-bg) !important;
+  --neutral-87: var(--cmd-bg) !important;
+  --neutral-84: var(--cmd-bg) !important;
+  --neutral-83: var(--cmd-bg) !important;
+  --neutral-79: var(--cmd-bg) !important;
+  --neutral-76: var(--cmd-surface) !important;
+  --neutral-75: var(--cmd-surface) !important;
+  --neutral-74: var(--cmd-surface) !important;
+  --neutral-73: var(--cmd-surface) !important;
+  --neutral-72: var(--cmd-surface) !important;
+  --neutral-71: var(--cmd-surface) !important;
+  --neutral-70: var(--cmd-surface) !important;
+  --neutral-69: var(--cmd-surface) !important;
+  --neutral-66: var(--cmd-surface) !important;
+  --neutral-65: var(--cmd-surface) !important;
+  --neutral-64: var(--cmd-surface) !important;
+  --neutral-63: var(--cmd-surface) !important;
+  --neutral-62: var(--cmd-surface) !important;
 
-  /* --- DISCORD VISUAL REFRESH BORDERS & DIVIDERS (Neutral 40-60) --- */
-  --neutral-60: var(--term-border) !important;
-  --neutral-59: var(--term-border) !important;
-  --neutral-50: var(--term-border) !important;
-  --neutral-49: var(--term-border) !important;
-  --neutral-47: var(--term-border) !important;
-  --neutral-46: var(--term-border) !important;
-  --neutral-45: var(--term-border) !important;
-  --neutral-40: var(--term-border) !important;
+  /* --- DISCORD VISUAL REFRESH BORDERS (Neutral 40-60) --- */
+  --neutral-60: var(--cmd-border) !important;
+  --neutral-59: var(--cmd-border) !important;
+  --neutral-50: var(--cmd-border) !important;
+  --neutral-49: var(--cmd-border) !important;
+  --neutral-47: var(--cmd-border) !important;
+  --neutral-46: var(--cmd-border) !important;
+  --neutral-45: var(--cmd-border) !important;
+  --neutral-40: var(--cmd-border) !important;
 
   /* --- DISCORD VISUAL REFRESH MUTED TEXT (Neutral 31-39) --- */
-  --neutral-39: var(--term-text-muted) !important;
-  --neutral-38: var(--term-text-muted) !important;
-  --neutral-37: var(--term-text-muted) !important;
-  --neutral-36: var(--term-text-muted) !important;
-  --neutral-34: var(--term-text-muted) !important;
-  --neutral-32: var(--term-text-muted) !important;
-  --neutral-31: var(--term-text-muted) !important;
+  --neutral-39: var(--cmd-text-muted) !important;
+  --neutral-38: var(--cmd-text-muted) !important;
+  --neutral-37: var(--cmd-text-muted) !important;
+  --neutral-36: var(--cmd-text-muted) !important;
+  --neutral-34: var(--cmd-text-muted) !important;
+  --neutral-32: var(--cmd-text-muted) !important;
+  --neutral-31: var(--cmd-text-muted) !important;
 
   /* --- DISCORD VISUAL REFRESH BODY TEXT (Neutral 15-29) --- */
-  --neutral-29: var(--term-text) !important;
-  --neutral-28: var(--term-text) !important;
-  --neutral-27: var(--term-text) !important;
-  --neutral-23: var(--term-text) !important;
-  --neutral-22: var(--term-text) !important;
-  --neutral-19: var(--term-text) !important;
-  --neutral-16: var(--term-text) !important;
-  --neutral-15: var(--term-text) !important;
+  --neutral-29: var(--cmd-text) !important;
+  --neutral-28: var(--cmd-text) !important;
+  --neutral-27: var(--cmd-text) !important;
+  --neutral-23: var(--cmd-text) !important;
+  --neutral-22: var(--cmd-text) !important;
+  --neutral-19: var(--cmd-text) !important;
+  --neutral-16: var(--cmd-text) !important;
+  --neutral-15: var(--cmd-text) !important;
 
-  /* --- DISCORD VISUAL REFRESH BRIGHT HEADERS (Neutral 1-12) --- */
-  --neutral-12: var(--term-text-bright) !important;
-  --neutral-11: var(--term-text-bright) !important;
-  --neutral-9: var(--term-text-bright) !important;
-  --neutral-8: var(--term-text-bright) !important;
-  --neutral-6: var(--term-text-bright) !important;
-  --neutral-4: var(--term-text-bright) !important;
-  --neutral-2: var(--term-text-bright) !important;
-  --neutral-1: var(--term-text-bright) !important;
+  /* --- DISCORD VISUAL REFRESH HEADERS (Neutral 1-12) --- */
+  --neutral-12: var(--cmd-text-bright) !important;
+  --neutral-11: var(--cmd-text-bright) !important;
+  --neutral-9: var(--cmd-text-bright) !important;
+  --neutral-8: var(--cmd-text-bright) !important;
+  --neutral-6: var(--cmd-text-bright) !important;
+  --neutral-4: var(--cmd-text-bright) !important;
+  --neutral-2: var(--cmd-text-bright) !important;
+  --neutral-1: var(--cmd-text-bright) !important;
 
-  --white-500: var(--term-text-bright) !important;
-  --black-500: #000000 !important;
+  --white-500: var(--cmd-text-bright) !important;
+  --black-500: var(--cmd-bg) !important;
 
-  /* --- BRAND / BLURPLE -> TERMINAL GREEN --- */
-  --blurple-25: var(--term-green) !important;
-  --blurple-26: var(--term-green) !important;
-  --blurple-27: var(--term-green) !important;
-  --blurple-28: var(--term-green) !important;
-  --blurple-29: var(--term-green) !important;
-  --blurple-37: var(--term-green) !important;
-  --blurple-44: var(--term-green) !important;
-  --blurple-48: var(--term-green) !important;
-  --blurple-49: var(--term-green) !important;
-  --blurple-50: var(--term-green) !important;
-  --blurple-52: var(--term-green) !important;
-  --blurple-54: #00e65c !important;
-  --blurple-58: #00cc52 !important;
-  --blurple-65: #00993d !important;
-  --blurple-87: #003314 !important;
+  /* --- BRAND TOKENS -> CMD WHITE & BLUE --- */
+  --blurple-25: var(--cmd-text-bright) !important;
+  --blurple-26: var(--cmd-text-bright) !important;
+  --blurple-27: var(--cmd-text-bright) !important;
+  --blurple-49: var(--cmd-text-bright) !important;
+  --blurple-50: var(--cmd-text-bright) !important;
+  --brand-experiment: var(--cmd-text-bright) !important;
+  --brand-500: var(--cmd-text-bright) !important;
 
-  /* Status Colors */
-  --green-new-61: var(--term-green) !important;
-  --red-new-61: #ff5555 !important;
-  --yellow-new-57: #ffb86c !important;
+  /* Status Colors (Classic Terminal Codes) */
+  --green-new-61: #16C60C !important;
+  --red-new-61: #E74856 !important;
+  --yellow-new-57: #F9F1A5 !important;
+  --text-link: var(--cmd-blue) !important;
 
-  /* Fallback legacy tokens */
-  --bg-base-primary: var(--term-black) !important;
-  --bg-base-secondary: var(--term-dark) !important;
-  --bg-base-tertiary: var(--term-black) !important;
-  --background-primary: var(--term-black) !important;
-  --background-secondary: var(--term-dark) !important;
-  --background-secondary-alt: var(--term-black) !important;
-  --background-tertiary: var(--term-black) !important;
-  --background-accent: var(--term-border) !important;
-  --background-floating: var(--term-surface) !important;
-  --channeltextarea-background: var(--term-dark) !important;
-  --brand-experiment: var(--term-green) !important;
-  --brand-500: var(--term-green) !important;
-  --text-normal: var(--term-text) !important;
-  --text-muted: var(--term-text-muted) !important;
-  --header-primary: var(--term-text-bright) !important;
+  /* Legacy Discord Fallback */
+  --bg-base-primary: var(--cmd-bg) !important;
+  --bg-base-secondary: var(--cmd-bg) !important;
+  --bg-base-tertiary: var(--cmd-bg) !important;
+  --background-primary: var(--cmd-bg) !important;
+  --background-secondary: var(--cmd-bg) !important;
+  --background-tertiary: var(--cmd-bg) !important;
+  --background-floating: var(--cmd-surface) !important;
+  --channeltextarea-background: var(--cmd-bg) !important;
+  --text-normal: var(--cmd-text) !important;
+  --text-muted: var(--cmd-text-muted) !important;
+  --header-primary: var(--cmd-text-bright) !important;
 }
 
 /* ==========================================================================
-   2. PERFORMANCE STRIPPING (Pure Speed / Zero GPU Overhead)
+   2. HARDWARE OPTIMIZATIONS (Instant Response / Zero Composite Repaints)
    ========================================================================== */
 *, *::before, *::after {
   box-shadow: none !important;
   text-shadow: none !important;
-  backdrop-filter: none !important;        /* Eliminates Discord's laggy blur layers */
-  border-radius: 0 !important;             /* Sharp CRT terminal corners */
-  transition: none !important;              /* Zero paint-delay on hover/scroll */
+  backdrop-filter: none !important;        /* Kills Discord GPU blur load */
+  border-radius: 0 !important;             /* Eliminates rounded-corner antialiasing */
+  transition: none !important;              /* Zero input/hover lag */
 }
 
-/* Hardcoded Fallback Background Enforcers */
+/* Background Paint Enforcer */
 #app-mount,
 #app-mount [class*="app_"],
 #app-mount [class*="bg_"],
@@ -149,46 +142,48 @@
 #app-mount [class*="sidebar_"],
 #app-mount [class*="guilds_"],
 #app-mount [class*="panels_"] {
-  background-color: var(--term-black) !important;
+  background-color: var(--cmd-bg) !important;
 }
 
 /* ==========================================================================
-   3. AUTHENTIC TERMINAL UI DETAILS
+   3. WINDOWS 10 CMD AESTHETICS
    ========================================================================== */
 
-/* 1px Terminal Grid Dividers */
+/* 1px Console Framing */
 #app-mount [class*="sidebar_"],
 #app-mount [class*="guilds_"] {
-  border-right: 1px solid var(--term-border) !important;
+  border-right: 1px solid var(--cmd-border) !important;
 }
 #app-mount [class*="membersWrap_"] {
-  border-left: 1px solid var(--term-border) !important;
+  border-left: 1px solid var(--cmd-border) !important;
 }
 
-/* Command Prompt ('>') Input Bar */
+/* Windows 10 Command Prompt: 'C:\Discord>' Input Field */
 #app-mount [class*="channelTextArea_"] {
-  border: 1px solid var(--term-border) !important;
-  background-color: var(--term-dark) !important;
+  border: 1px solid var(--cmd-border) !important;
+  background-color: var(--cmd-bg) !important;
   position: relative;
 }
 #app-mount [class*="channelTextArea_"]:focus-within {
-  border-color: var(--term-green) !important;
+  border-color: var(--cmd-text-bright) !important;
 }
 #app-mount [class*="channelTextArea_"]::before {
-  content: ">";
+  content: "C:\\Discord>";
   position: absolute;
   left: 12px;
   top: 13px;
-  color: var(--term-green);
-  font-weight: bold;
+  color: var(--cmd-text);
+  font-weight: 500;
   font-family: var(--font-primary);
+  font-size: 14px;
   z-index: 2;
+  pointer-events: none;
 }
 #app-mount [class*="slateTextArea_"] {
-  padding-left: 28px !important;
+  padding-left: 110px !important;
 }
 
-/* Square CRT Server Badges & Avatars */
+/* Square Server Icons / Avatars (No SVG Masks) */
 #app-mount foreignObject,
 #app-mount [class*="avatar_"] {
   border-radius: 0 !important;
@@ -196,47 +191,57 @@
   -webkit-mask: none !important;
 }
 
-/* Selected Channel / Server Block Indicator */
+/* Unread / Active Selection Indicator (CMD White Block Cursor) */
 #app-mount [class*="item__58105"],
 #app-mount [class*="pill_"] span {
-  background-color: var(--term-green) !important;
-  width: 4px !important;
+  background-color: var(--cmd-text-bright) !important;
+  width: 3px !important;
 }
 
 /* Message Hover */
 #app-mount [class*="message_"]:hover {
-  background-color: var(--term-surface) !important;
+  background-color: var(--cmd-surface) !important;
 }
 #app-mount [class*="message_"]::before {
-  display: none !important;                /* Eliminates your friend's composite layout lag */
+  display: none !important;
 }
 
-/* Codeblocks & Embeds */
+/* Mention Bar (Left-side bar) */
+#app-mount [class*="mentioned_"]:before {
+  content: "" !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px !important;
+  background: var(--cmd-text-bright) !important;
+}
+
+/* Codeblocks / Embeds */
 #app-mount pre,
 #app-mount code,
 #app-mount [class*="embedFull_"] {
-  background-color: var(--term-surface) !important;
-  border: 1px solid var(--term-border) !important;
-  border-left: 3px solid var(--term-green) !important;
+  background-color: var(--cmd-surface) !important;
+  border: 1px solid var(--cmd-border) !important;
 }
 
-/* Ultra-Thin 3px Terminal Scrollbar */
+/* Flat Windows Scrollbars */
 ::-webkit-scrollbar {
-  width: 3px !important;
-  height: 3px !important;
+  width: 4px !important;
+  height: 4px !important;
 }
 ::-webkit-scrollbar-track {
-  background: var(--term-black) !important;
+  background: var(--cmd-bg) !important;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--term-border) !important;
+  background: var(--cmd-border) !important;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--term-green) !important;
+  background: var(--cmd-text-muted) !important;
 }
 
-/* Selection */
+/* Windows 10 Console Inverted Selection (White block with black text) */
 ::selection {
-  background: var(--term-green) !important;
-  color: #000000 !important;
+  background: #FFFFFF !important;
+  color: #0C0C0C !important;
 }
