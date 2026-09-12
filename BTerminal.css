@@ -147,29 +147,37 @@
   border-left: 1px solid var(--cmd-border) !important;
 }
 
-/* Windows 10 Command Prompt: 'C:\Discord>' Input Field */
+/* Pixel-Perfect Aligned Windows 10 Prompt */
 #app-mount [class*="channelTextArea_"] {
   border: 1px solid var(--cmd-border) !important;
   background-color: var(--cmd-bg) !important;
   position: relative;
 }
+
 #app-mount [class*="channelTextArea_"]:focus-within {
   border-color: var(--cmd-text-bright) !important;
 }
+
 #app-mount [class*="channelTextArea_"]::before {
   content: "C:\\Discord>";
   position: absolute;
-  left: 12px;
-  top: 13px;
-  color: var(--cmd-text);
-  font-weight: 500;
+  left: 10px;
+  top: 11px;
+  line-height: 22px;
+  color: var(--cmd-text-muted);
   font-family: var(--font-primary);
   font-size: 14px;
+  font-weight: 500;
   z-index: 2;
   pointer-events: none;
 }
-#app-mount [class*="slateTextArea_"] {
-  padding-left: 110px !important;
+
+/* Synchronize text area & placeholder to the exact same starting point */
+#app-mount [class*="slateTextArea_"],
+#app-mount [class*="placeholder_"] {
+  padding-left: 92px !important;
+  line-height: 22px !important;
+  font-size: 14px !important;
 }
 
 /* Square Server Icons / Avatars (No SVG Masks) */
