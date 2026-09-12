@@ -1,37 +1,129 @@
 /**
  * @name BTerminal
  * @author TRcalled
- * @version 2.0.0
- * @description Authentic, ultra-optimized zero-bloat CRT Terminal theme for Discord.
+ * @version 3.0.0
+ * @description The lightest zero-bloat CRT Terminal theme for Discord (Visual Refresh Compatible).
  * @source https://github.com/TRcalled/BDThemes
 */
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 /* ==========================================================================
-   1. COLOR MAPPING (Bound to .theme-dark & #app-mount to guarantee override)
+   1. VISUAL REFRESH TOKEN OVERRIDES (What makes the colors actually change)
    ========================================================================== */
 :root,
+.visual-refresh,
 .theme-dark,
 .theme-light,
 #app-mount {
-  /* Terminal Color Palette */
-  --term-black: #050705;          /* Pure CRT screen black */
-  --term-dark: #090e0a;           /* Secondary console dark */
-  --term-surface: #0e150f;        /* Embeds & floating popouts */
+  /* Core Terminal Colors */
+  --term-black: #050705;          /* Deepest screen black */
+  --term-dark: #090e0a;           /* Secondary console black */
+  --term-surface: #0e150f;        /* Embeds, popouts & card surfaces */
   --term-border: #18331d;         /* 1px structural framing */
-  --term-green: #00ff66;          /* Classic Phosphor Green */
-  --term-green-dim: #1d4d29;      /* Muted status */
-  --term-text: #85c292;           /* Terminal readout text */
-  --term-text-bright: #d9ffd9;    /* Command / User focus */
-  --term-text-muted: #3a5e42;     /* Inactive elements */
+  --term-green: #00ff66;          /* Classic Phosphor Green accent */
+  --term-green-dim: #1d4d29;      /* Inactive/Muted green */
+  --term-text: #85c292;           /* Standard terminal body text */
+  --term-text-bright: #d9ffd9;    /* High-contrast headers & user focus */
+  --term-text-muted: #3a5e42;     /* Timestamp & quiet text */
 
-  /* Global Monospace Font */
+  /* Global Monospace Terminal Font */
   --font-primary: 'JetBrains Mono', Consolas, 'Courier New', monospace !important;
   --font-display: 'JetBrains Mono', Consolas, 'Courier New', monospace !important;
   --font-code: 'JetBrains Mono', Consolas, 'Courier New', monospace !important;
 
-  /* Discord Core Semantic Tokens */
+  /* --- DISCORD VISUAL REFRESH BACKGROUNDS (Neutral 62-99) --- */
+  --neutral-99: var(--term-black) !important;
+  --neutral-97: var(--term-black) !important;
+  --neutral-95: var(--term-black) !important;
+  --neutral-92: var(--term-black) !important;
+  --neutral-91: var(--term-black) !important;
+  --neutral-87: var(--term-dark) !important;
+  --neutral-84: var(--term-dark) !important;
+  --neutral-83: var(--term-dark) !important;
+  --neutral-79: var(--term-dark) !important;
+  --neutral-76: var(--term-surface) !important;
+  --neutral-75: var(--term-surface) !important;
+  --neutral-74: var(--term-surface) !important;
+  --neutral-73: var(--term-surface) !important;
+  --neutral-72: var(--term-surface) !important;
+  --neutral-71: var(--term-surface) !important;
+  --neutral-70: var(--term-surface) !important;
+  --neutral-69: var(--term-surface) !important;
+  --neutral-66: var(--term-surface) !important;
+  --neutral-65: var(--term-surface) !important;
+  --neutral-64: var(--term-surface) !important;
+  --neutral-63: var(--term-surface) !important;
+  --neutral-62: var(--term-surface) !important;
+
+  /* --- DISCORD VISUAL REFRESH BORDERS & DIVIDERS (Neutral 40-60) --- */
+  --neutral-60: var(--term-border) !important;
+  --neutral-59: var(--term-border) !important;
+  --neutral-50: var(--term-border) !important;
+  --neutral-49: var(--term-border) !important;
+  --neutral-47: var(--term-border) !important;
+  --neutral-46: var(--term-border) !important;
+  --neutral-45: var(--term-border) !important;
+  --neutral-40: var(--term-border) !important;
+
+  /* --- DISCORD VISUAL REFRESH MUTED TEXT (Neutral 31-39) --- */
+  --neutral-39: var(--term-text-muted) !important;
+  --neutral-38: var(--term-text-muted) !important;
+  --neutral-37: var(--term-text-muted) !important;
+  --neutral-36: var(--term-text-muted) !important;
+  --neutral-34: var(--term-text-muted) !important;
+  --neutral-32: var(--term-text-muted) !important;
+  --neutral-31: var(--term-text-muted) !important;
+
+  /* --- DISCORD VISUAL REFRESH BODY TEXT (Neutral 15-29) --- */
+  --neutral-29: var(--term-text) !important;
+  --neutral-28: var(--term-text) !important;
+  --neutral-27: var(--term-text) !important;
+  --neutral-23: var(--term-text) !important;
+  --neutral-22: var(--term-text) !important;
+  --neutral-19: var(--term-text) !important;
+  --neutral-16: var(--term-text) !important;
+  --neutral-15: var(--term-text) !important;
+
+  /* --- DISCORD VISUAL REFRESH BRIGHT HEADERS (Neutral 1-12) --- */
+  --neutral-12: var(--term-text-bright) !important;
+  --neutral-11: var(--term-text-bright) !important;
+  --neutral-9: var(--term-text-bright) !important;
+  --neutral-8: var(--term-text-bright) !important;
+  --neutral-6: var(--term-text-bright) !important;
+  --neutral-4: var(--term-text-bright) !important;
+  --neutral-2: var(--term-text-bright) !important;
+  --neutral-1: var(--term-text-bright) !important;
+
+  --white-500: var(--term-text-bright) !important;
+  --black-500: #000000 !important;
+
+  /* --- BRAND / BLURPLE -> TERMINAL GREEN --- */
+  --blurple-25: var(--term-green) !important;
+  --blurple-26: var(--term-green) !important;
+  --blurple-27: var(--term-green) !important;
+  --blurple-28: var(--term-green) !important;
+  --blurple-29: var(--term-green) !important;
+  --blurple-37: var(--term-green) !important;
+  --blurple-44: var(--term-green) !important;
+  --blurple-48: var(--term-green) !important;
+  --blurple-49: var(--term-green) !important;
+  --blurple-50: var(--term-green) !important;
+  --blurple-52: var(--term-green) !important;
+  --blurple-54: #00e65c !important;
+  --blurple-58: #00cc52 !important;
+  --blurple-65: #00993d !important;
+  --blurple-87: #003314 !important;
+
+  /* Status Colors */
+  --green-new-61: var(--term-green) !important;
+  --red-new-61: #ff5555 !important;
+  --yellow-new-57: #ffb86c !important;
+
+  /* Fallback legacy tokens */
+  --bg-base-primary: var(--term-black) !important;
+  --bg-base-secondary: var(--term-dark) !important;
+  --bg-base-tertiary: var(--term-black) !important;
   --background-primary: var(--term-black) !important;
   --background-secondary: var(--term-dark) !important;
   --background-secondary-alt: var(--term-black) !important;
@@ -39,47 +131,28 @@
   --background-accent: var(--term-border) !important;
   --background-floating: var(--term-surface) !important;
   --channeltextarea-background: var(--term-dark) !important;
-
-  /* Modern Discord Token Injections */
-  --bg-base-primary: var(--term-black) !important;
-  --bg-base-secondary: var(--term-dark) !important;
-  --bg-base-tertiary: var(--term-black) !important;
-  --bg-surface-raised: var(--term-surface) !important;
-  --bg-surface-overlay: var(--term-surface) !important;
-
-  /* Text & Interactivity */
+  --brand-experiment: var(--term-green) !important;
+  --brand-500: var(--term-green) !important;
   --text-normal: var(--term-text) !important;
   --text-muted: var(--term-text-muted) !important;
   --header-primary: var(--term-text-bright) !important;
-  --header-secondary: var(--term-text) !important;
-  --interactive-normal: var(--term-text-muted) !important;
-  --interactive-hover: var(--term-text-bright) !important;
-  --interactive-active: var(--term-green) !important;
-  --interactive-muted: #1c3021 !important;
-  --brand-experiment: var(--term-green) !important;
-  --brand-500: var(--term-green) !important;
-
-  /* Modifiers */
-  --background-modifier-hover: #00ff6610 !important;
-  --background-modifier-active: #00ff6622 !important;
-  --background-modifier-selected: #00ff6633 !important;
-  --background-mentioned: #00ff660d !important;
 }
 
 /* ==========================================================================
-   2. PERFORMANCE STRIPPING (Maximum FPS / Zero Lag)
+   2. PERFORMANCE STRIPPING (Pure Speed / Zero GPU Overhead)
    ========================================================================== */
 *, *::before, *::after {
   box-shadow: none !important;
   text-shadow: none !important;
-  backdrop-filter: none !important;
-  border-radius: 0 !important;             /* Terminal UI is strictly rectangular */
-  transition: none !important;              /* Zero paint delay on hover */
+  backdrop-filter: none !important;        /* Eliminates Discord's laggy blur layers */
+  border-radius: 0 !important;             /* Sharp CRT terminal corners */
+  transition: none !important;              /* Zero paint-delay on hover/scroll */
 }
 
-/* Instant Black Background Enforcement */
+/* Hardcoded Fallback Background Enforcers */
 #app-mount,
-#app-mount .bg__960e4,
+#app-mount [class*="app_"],
+#app-mount [class*="bg_"],
 #app-mount [class*="chat_"],
 #app-mount [class*="sidebar_"],
 #app-mount [class*="guilds_"],
@@ -88,13 +161,11 @@
 }
 
 /* ==========================================================================
-   3. AUTHENTIC TERMINAL UI COMPONENTS
+   3. AUTHENTIC TERMINAL UI DETAILS
    ========================================================================== */
 
-/* Terminal Grid Borders */
-#app-mount [class*="sidebar_"] {
-  border-right: 1px solid var(--term-border) !important;
-}
+/* 1px Terminal Grid Dividers */
+#app-mount [class*="sidebar_"],
 #app-mount [class*="guilds_"] {
   border-right: 1px solid var(--term-border) !important;
 }
@@ -102,7 +173,7 @@
   border-left: 1px solid var(--term-border) !important;
 }
 
-/* Terminal Command Prompt Input (Adds a CLI '>' prompt) */
+/* Command Prompt ('>') Input Bar */
 #app-mount [class*="channelTextArea_"] {
   border: 1px solid var(--term-border) !important;
   background-color: var(--term-dark) !important;
@@ -125,41 +196,30 @@
   padding-left: 28px !important;
 }
 
-/* Server Icons (Terminal square badges) */
-#app-mount [class*="guilds_"] foreignObject,
-#app-mount [class*="guilds_"] [class*="wrapper_"] {
+/* Square CRT Server Badges & Avatars */
+#app-mount foreignObject,
+#app-mount [class*="avatar_"] {
   border-radius: 0 !important;
   mask: none !important;
   -webkit-mask: none !important;
 }
 
-/* Server Selected Marker (Terminal Block Cursor) */
+/* Selected Channel / Server Block Indicator */
 #app-mount [class*="item__58105"],
 #app-mount [class*="pill_"] span {
   background-color: var(--term-green) !important;
   width: 4px !important;
-  border-radius: 0 !important;
 }
 
-/* Chat Messages */
+/* Message Hover */
 #app-mount [class*="message_"]:hover {
   background-color: var(--term-surface) !important;
 }
 #app-mount [class*="message_"]::before {
-  display: none !important;                /* Eliminates your friend's laggy layout hack */
-}
-#app-mount [class*="mentioned_"]:before {
-  content: "" !important;
-  display: block !important;
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px !important;
-  background: var(--term-green) !important;
+  display: none !important;                /* Eliminates your friend's composite layout lag */
 }
 
-/* Terminal Log Codeblocks & Embeds */
+/* Codeblocks & Embeds */
 #app-mount pre,
 #app-mount code,
 #app-mount [class*="embedFull_"] {
@@ -168,7 +228,7 @@
   border-left: 3px solid var(--term-green) !important;
 }
 
-/* Ultra-Thin 3px Green Scrollbar */
+/* Ultra-Thin 3px Terminal Scrollbar */
 ::-webkit-scrollbar {
   width: 3px !important;
   height: 3px !important;
