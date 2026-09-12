@@ -1,27 +1,24 @@
 :root {
+  /* Base Palette */
   --term-black: #050705;
   --term-dark: #0a0d0a;
   --term-surface: #0f140f;
   --term-border: #1a2a1c;
-  --term-border-bright: #00ff6644;
-  
-  --term-green: #ffb000;
+  --term-green: #00ff66;
   --term-green-dim: #2e663a;
-  --term-green-subtle: #122416;
-  
   --term-text-bright: #e6ffe6;
   --term-text-main: #85b88f;
   --term-text-muted: #3d5e44;
-  
-  --font-primary: "JetBrains Mono", "Fira Code", "Cascadia Code", Consolas, "Courier New", monospace !important;
+
+  /* Fonts */
+  --font-primary: "JetBrains Mono", Consolas, monospace !important;
   --font-display: var(--font-primary) !important;
   --font-code: var(--font-primary) !important;
-  --font-headline: var(--font-primary) !important;
 
+  /* Discord Design Tokens */
   --bg-base-primary: var(--term-black) !important;
   --bg-base-secondary: var(--term-dark) !important;
   --bg-base-tertiary: var(--term-black) !important;
-
   --background-primary: var(--term-black) !important;
   --background-secondary: var(--term-dark) !important;
   --background-secondary-alt: var(--term-black) !important;
@@ -30,12 +27,10 @@
   --background-floating: var(--term-surface) !important;
   --channeltextarea-background: var(--term-dark) !important;
 
-  /* Brand / Interactive Overrides */
+  /* Accent & Interaction Tokens */
   --brand-experiment: var(--term-green) !important;
   --brand-500: var(--term-green) !important;
-  --brand-560: #00cc52 !important;
-
-  /* Text & Headers */
+  --brand-560: var(--term-green) !important;
   --text-normal: var(--term-text-main) !important;
   --text-muted: var(--term-text-muted) !important;
   --text-link: var(--term-green) !important;
@@ -44,23 +39,15 @@
   --interactive-normal: var(--term-text-muted) !important;
   --interactive-hover: var(--term-text-bright) !important;
   --interactive-active: var(--term-green) !important;
-  --interactive-muted: #1e3323 !important;
 
-  /* Status Indicators */
-  --status-positive: var(--term-green) !important;
-  --status-warning: #ffb86c !important;
-  --status-danger: #ff5555 !important;
-
-  /* Modifiers */
+  /* Selection & Mention Modifiers */
   --background-modifier-hover: #00ff660d !important;
   --background-modifier-active: #00ff661a !important;
   --background-modifier-selected: #00ff6622 !important;
-  --background-modifier-accent: var(--term-border) !important;
   --background-mentioned: #00ff660f !important;
-  --background-mentioned-hover: #00ff6618 !important;
 }
 
-
+/* Strips heavy GPU layers (shadows, rounded corners, blur filters, animation delays) */
 *, *::before, *::after {
   box-shadow: none !important;
   text-shadow: none !important;
@@ -72,16 +59,15 @@
   transition-property: none !important;
 }
 
-/* 3.3. Text Selection */
 ::selection {
   background: var(--term-green) !important;
   color: #000000 !important;
 }
 
-
+/* Clean 1px structural terminal borders */
 #app-mount .sidebar_c48ade,
 #app-mount .chat_a7d72e,
-#app-mount .container_c8ffbb /* Member list */ {
+#app-mount .container_c8ffbb {
   border-left: 1px solid var(--term-border);
 }
 
@@ -89,7 +75,7 @@
   border-right: 1px solid var(--term-border);
 }
 
-
+/* Chat Input Bar */
 #app-mount .channelTextArea_f75fb0 {
   background: var(--term-dark) !important;
   border: 1px solid var(--term-border) !important;
@@ -99,14 +85,9 @@
   border-color: var(--term-green) !important;
 }
 
-
+/* Message Hover */
 #app-mount .message__5126c:hover {
   background: var(--term-surface) !important;
-}
-
-#app-mount .mentioned__5126c:before {
-  background: var(--term-green) !important;
-  width: 2px !important;
 }
 
 /* Codeblocks & Embeds */
@@ -117,28 +98,22 @@
   border: 1px solid var(--term-border) !important;
 }
 
-
+/* Thin Scrollbar */
 ::-webkit-scrollbar {
   width: 4px !important;
   height: 4px !important;
 }
-
-::-webkit-scrollbar-track {
-  background: transparent !important;
-}
-
 ::-webkit-scrollbar-thumb {
   background: var(--term-border) !important;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: var(--term-green-dim) !important;
 }
 
-
+/* Popouts & Menus */
 #app-mount .menu_c1e9c4,
 #app-mount .userPopoutOuter_c69a7b,
-#app-mount .root__49fc1 /* Modals */ {
+#app-mount .root__49fc1 {
   background: var(--term-dark) !important;
   border: 1px solid var(--term-border) !important;
 }
@@ -146,10 +121,4 @@
 #app-mount .item_c1e9c4:hover:not(.colorDanger_c1e9c4) {
   background: var(--term-green) !important;
   color: #000000 !important;
-}
-
-
-#app-mount .item__58105 {
-  background: var(--term-green) !important;
-  border-radius: 0 !important;
 }
